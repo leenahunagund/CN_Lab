@@ -68,3 +68,10 @@ else
 }
 
 }
+/* ALTERNATE OUTPUT
+Enter message bits: 1101011011
+Enter generator: 10011
+The checksum code is: 11010110111110
+Enter checksum code: 110001110101111
+Enter generator: 10011
+Data stream is invalid. CRC error occurred.*/
