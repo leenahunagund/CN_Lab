@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Collections;
-public class sort1{
+public class frameSort{
         public static void main(String[]args){
                 List<int[]>frame=new ArrayList<>();
                 System.out.println("Enter no. of frames:");
