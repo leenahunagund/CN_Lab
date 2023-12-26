@@ -12,7 +12,7 @@ public class frameSort{
                 int seqNum=1;
                 for(int i=0;i<n;i++){
                         Random random=new Random();
-                        seqNum=seqNum+random.nextInt(1000);
+                        seqNum=random.nextInt(1000);
                         System.out.printf("Enter data  for %d frame>> ",i+1);
                         int data=sc.nextInt();
                         frame.add(new int []{seqNum,data});
