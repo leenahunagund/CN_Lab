@@ -19,9 +19,9 @@ $ns flush-trace
 close $ntrace
 close $namfile
 #Execute the NAM animation file
-exec nam prog5.nam &amp;
+exec nam prog5.nam &
 #Plot the Congestion Window graph using xgraph
-exec xgraph WinFile0 WinFile1 &amp;
+exec xgraph WinFile0 WinFile1 &
 exit 0
 }
 #Plot Window Procedure
@@ -31,11 +31,11 @@ set time 0.1
 set now [$ns now]
 set cwnd [$tcpSource set cwnd_]
 # To plot graph over x and y axis
-puts $file &quot;$now $cwnd&quot;
-$ns at [expr $now+$time] &quot;PlotWindow $tcpSource $file&quot;
+puts $file "$now $cwnd"
+$ns at [expr $now+$time] "PlotWindow $tcpSource $file"
 }
 #Create 6 nodes
-for {set i 0} {$i&lt;6} {incr i} {
+for {set i 0} {$i<6} {incr i} {
 set n($i) [$ns node]
 }
 #Create duplex links between the nodes
@@ -43,8 +43,7 @@ $ns duplex-link $n(0) $n(2) 2Mb 10ms DropTail
 $ns duplex-link $n(1) $n(2) 2Mb 10ms DropTail
 $ns duplex-link $n(2) $n(3) 1.0Mb 100ms DropTail
 #Nodes n(3) , n(4) and n(5) are considered in a LAN
-set lan [$ns newLan &quot;$n(3) $n(4) $n(5)&quot; 0.5Mb 40ms LL Queue/DropTail MAC/802_3
-Channel]
+set lan [$ns newLan "$n(3) $n(4) $n(5)" 0.5Mb 40ms LL Queue/DropTail MAC/802_3 Channel]
 #Orientation to the nodes
 $ns duplex-link-op $n(0) $n(2) orient right-down
 $ns duplex-link-op $n(1) $n(2) orient right-up
@@ -52,8 +51,8 @@ $ns duplex-link-op $n(2) $n(3) orient right
 #Setup queue between n(2) and n(3) and monitor the queue
 $ns queue-limit $n(2) $n(3) 20
 $ns duplex-link-op $n(2) $n(3) queuePos 0.5
-#Set error model on link n(2) to n(3) (optional- to analyse the amt of drop removed pkts in
-tr file)
+#Set error model on link n(2) to n(3) (optional- to analyse the amt of drop removed pkts
+in tr file)
 set loss_module [new ErrorModel]
 $loss_module ranvar [new RandomVariable/Uniform]
 $loss_module drop-target [new Agent/Null]
@@ -85,12 +84,12 @@ set ftp1 [new Application/FTP]
 $ftp1 attach-agent $tcp1
 $ftp1 set type_ FTP
 #Schedule Events
-$ns at 0.1 &quot;$ftp0 start&quot;
-$ns at 0.1 &quot;PlotWindow $tcp0 $winFile0&quot;
-$ns at 0.5 &quot;$ftp1 start&quot;
-$ns at 0.5 &quot;PlotWindow $tcp1 $winFile1&quot;
-$ns at 25.0 &quot;$ftp0 stop&quot;
-$ns at 25.1 &quot;$ftp1 stop&quot;
-$ns at 25.2 &quot;Finish&quot;
+$ns at 0.1 "$ftp0 start"
+$ns at 0.1 "PlotWindow $tcp0 $winFile0"
+$ns at 0.5 "$ftp1 start"
+$ns at 0.5 "PlotWindow $tcp1 $winFile1"
+$ns at 25.0 "$ftp0 stop"
+$ns at 25.1 "$ftp1 stop"
+$ns at 25.2 "Finish"
 #Run the simulation
 $ns run
